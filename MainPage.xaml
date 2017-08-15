@@ -1,0 +1,61 @@
+﻿<Page
+	x:Class="ShiroChroNism_UWP.MainPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:ShiroChroNism_UWP"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	Background="DarkViolet" Foreground="Black">
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="4*"/>
+			<RowDefinition Height="25"/>
+			<RowDefinition Height="4*"/>
+			<RowDefinition Height="25"/>
+			<RowDefinition Height="1*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="8*"/>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="64"/>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="8*"/>
+			<ColumnDefinition Width="2*"/>
+		</Grid.ColumnDefinitions>
+
+		<!-- Tittle -->
+		<TextBlock Text="ShiroChroNism" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+
+		<!-- Before Part -->
+		<ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1">
+			<Border BorderBrush="Gray" BorderThickness="5">
+				<Image x:Name="Preview" />
+			</Border>
+		</ScrollViewer>
+		<Button x:Name="OpenFile" Content="Open.jpg" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center" Click="OpenFile_Click" IsEnabled="True" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,25.667,0"/>
+		<TextBlock Text="Before" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+
+		<!-- Generate Part -->
+		<Slider x:Name="bwchanger" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Height="92" Value="128" Minimum="0" Maximum="255" SmallChange="1" LargeChange="16" TickPlacement="BottomRight"  Grid.Column="3" Grid.Row="1"/>
+		<TextBlock Text="{Binding Value, ElementName=bwchanger}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+		<TextBox Text="{Binding Value, ElementName=bwchanger, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="3"/>
+		<Button Name="GenerateButton" Content="ShiroChroNize!" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="GenerateButton_Click" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+			<RadioButton x:Name="arithmeticMean" GroupName="GenerateType" Content="Type-A" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True"/>
+			<RadioButton x:Name="geometricMean" GroupName="GenerateType" Content="Type-G" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		</StackPanel>
+
+		<!-- After Part -->
+		<ScrollViewer BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="5">
+			<Border BorderBrush="Gray" BorderThickness="5">
+				<Image x:Name="Afterview"/>
+			</Border>
+		</ScrollViewer>
+		<Button x:Name="SaveFile" Content="Save.jpg" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SaveFile_Click" IsEnabled="True" Grid.Row="4" Grid.Column="5"/>
+		<TextBlock Text="After" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="5"/>
+	</Grid>
+</Page>
